@@ -1,0 +1,9 @@
+{
+    "name": "softgenn/tu-proyecto", 
+    "description": "Una descripción de tu proyecto.", 
+    "license": "proprietary", 
+    "require": {
+        "mpdf/mpdf": "^8.2"
+    
+    }
+}
