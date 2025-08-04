@@ -135,7 +135,7 @@ class UsuarioController {
                 'doc_identidad' => $_POST['doc_identidad'],
                 'telefono' => $_POST['telefono']
             ];
-            
+            //Holaa
             // Instanciamos los modelos.
             $usuarioModel = new UsuarioModel();
             $tecnicoModel = new TecnicoModel();
