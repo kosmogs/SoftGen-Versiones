@@ -33,7 +33,7 @@ if (!isset($_SESSION['id_usuario']) || $_SESSION['id_rol'] != 2) {
             </div>
             <div class="text-end">
                 <span class="d-block">Bienvenido, <strong><?php echo htmlspecialchars($_SESSION['nombre_usuario']); ?></strong></span>
-                <a href="/softGenn/public/index.php?action=cerrar_sesion" class="btn btn-sm btn-outline-light mt-1">
+                <a href="../app/views/usuario/login.php" class="btn btn-sm btn-outline-light mt-1">
                     <i class="bi bi-box-arrow-right"></i> Cerrar Sesión
                 </a>
             </div>
@@ -126,5 +126,8 @@ if (!isset($_SESSION['id_usuario']) || $_SESSION['id_rol'] != 2) {
             </div>
         </section>
     </main>
+    <?php 
+        require_once '/../xampp/htdocs/softgenn/public/headerandfoother/foother1.php';
+    ?>
 </body>
 </html>
