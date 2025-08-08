@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Saira:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="../public/css/iniciosesion.css">
+
     <link rel="icon" type="image/png" sizes="16x16" href="public/img/Logo Favicon 16x16.png">
     <link rel="icon" type="image/png" sizes="32x32" href="public/img/Logo favicon 1.0.png">
     <link rel="icon" type="image/png" sizes="180x180" href="public/img/Logo Favicon 180x180.png">
@@ -32,7 +33,7 @@
                     <form action="/softGenn/public/index.php?action=iniciar_sesion" method="POST" id="loginForm " class="shadown" >
 
                         <div class="mb-2">
-                            <select name="rol" id="rol">
+                            <select name="rol" id="rol" required>
                                 <option value="">Elija su rol</option>
                                 <option value="2">Tecnico</option>
                                 <option value="1">Administrador</option>
