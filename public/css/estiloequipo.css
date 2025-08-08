@@ -105,11 +105,11 @@ header {
     background-color: #135787;
 }
 
-/**
- * Anula el color de fondo gris de las opciones del select.
- * Este selector apunta a un ítem de menú desplegable (:dropdown-item)
- * cuando está en estado :hover (mouse encima) o :focus (seleccionado).
-*/
+.form-check-azul:checked{
+    background-color: black ;
+    border: #135787;
+}
+
 .dropdown-menu > .dropdown-item:hover,
 .dropdown-menu > .dropdown-item:focus {
   background-color: #135787; /* Tu nuevo color de fondo (ej: azul oscuro) */

@@ -19,6 +19,7 @@ if (!isset($_SESSION['id_usuario'])) {
 
 
     <link rel="stylesheet" href="/softGenn/public/css/estiloequipo.css">
+    
 
 
     <link rel="stylesheet" href="../public/css/cssBoostrap/bootstrap.min.css">
@@ -82,6 +83,39 @@ if (!isset($_SESSION['id_usuario'])) {
                     <?php endif; ?>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-md-3 mb-3">
+                    <label for="tipo_servicio" class="form-label">Tipo de servicio</label>
+                    <select class="form-select" name="ser_tipo_servicio" id="tipo_servicio" required>
+                        <option value="">Seleccione un tipo de servicio</option>
+                        <?php if (isset($tipo_servicio) && is_array($tipo_servicio)): ?>
+                        <?php foreach ($tipo_servicio as $servicio):?>
+                            <option value="<?= htmlspecialchars($servicio); ?>">
+                                <?= htmlspecialchars($servicio); ?>
+                            </option>
+                        <?php endforeach; ?>
+                        <?php else: ?>
+                            <option value="" disabled>No hay tipos de servicio disponibles</option>
+                        <?php endif; ?>
+                    </select>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label for="tipo_informe" class="form-label">Tipo informe</label>
+                    <select class="form-select" name="ser_tipo_informe" id="tipo_informe" required>
+                        <option value="">Seleccione el tipo de informe</option>
+                        <?php if (isset($tipo_servicio) && is_array($tipo_informe)): ?>
+                        <?php foreach ($tipo_informe as $tinforme):?>
+                            <option value="<?=htmlspecialchars($tinforme); ?>">
+                                <?=htmlspecialchars($tinforme); ?>
+                            </option>
+                        <?php endforeach; ?>
+                        <?php else: ?>
+                            <option value=""disabled>No hay tipos de informes que elegir</option>
+                        <?php endif; ?>
+                    </select>
+                </div>
+
+            </div>
             
             <div class="row">
                 <div class="col-md-6 mb-3">
@@ -137,7 +171,7 @@ if (!isset($_SESSION['id_usuario'])) {
         <div class="step" id="step2">
             <h5 class="mb-3">2. Detalles de Inspección General</h5>
             <div class="row">
-                <div class="col-md-4 col-6 mb-2"><input type="checkbox" class="form-check-input" name="ig_goteras" value="1"> <label>Goteras</div>
+                <div class="col-md-4 col-6 mb-2"><input class="form-check-input" type="checkbox" value="1" id="azul" name="ig_goteras"><label>Goteras </label></div>
                 <div class="col-md-4 col-6 mb-2"><input type="checkbox" class="form-check-input" name="ig_gabinete" value="1"> <label>Gabinete</label></div>
                 <div class="col-md-4 col-6 mb-2"><input type="checkbox" class="form-check-input" name="ig_filtro" value="1"> <label>Filtro</label></div>
                 <div class="col-md-4 col-6 mb-2"><input type="checkbox" class="form-check-input" name="ig_drenaje" value="1"> <label>Drenaje</label></div>
@@ -166,42 +200,6 @@ if (!isset($_SESSION['id_usuario'])) {
         <!-- PASO 3: OBSERVACIONES -->
         <div class="step" id="step3"> 
             <h5 class="md-3 mb-3"> Tipo de servicio </h5>
-            <div class="row">
-                <div class="col-md-3 mb-3">
-                    <label for="tipo_servicio" class="form-label">Tipo de servicio</label>
-                    <select class="form-select" name="ser_tipo_servicio" id="tipo_servicio" required>
-                        <option value="">Seleccione un tipo de servicio</option>
-                        <?php if (isset($tipo_servicio) && is_array($tipo_servicio)): ?>
-                        <?php foreach ($tipo_servicio as $servicio):?>
-                            <option value="<?= htmlspecialchars($servicio); ?>">
-                                <?= htmlspecialchars($servicio); ?>
-                            </option>
-                        <?php endforeach; ?>
-                        <?php else: ?>
-                            <option value="" disabled>No hay tipos de servicio disponibles</option>
-                        <?php endif; ?>
-                    </select>
-                </div>
-                <div class="col-md-3 mb-3">
-                    <label for="tipo_informe" class="form-label">Tipo informe</label>
-                    <select class="form-select" name="ser_tipo_informe" id="tipo_informe" required>
-                        <option value="">Seleccione el tipo de informe</option>
-                        <?php if (isset($tipo_servicio) && is_array($tipo_informe)): ?>
-                        <?php foreach ($tipo_informe as $tinforme):?>
-                            <option value="<?=htmlspecialchars($tinforme); ?>">
-                                <?=htmlspecialchars($tinforme); ?>
-                            </option>
-                        <?php endforeach; ?>
-                        <?php else: ?>
-                            <option value=""disabled>No hay tipos de informes que elegir</option>
-                        <?php endif; ?>
-                    </select>
-                </div>
-                <div class="col-md-4 mb-3">
-                    <label class="form-label">Observaciones</label>
-                    <input type="text" class="form-control" name="ser_observaciones" placeholder="El dispositivos tine...">
-                </div>
-            </div>
             <div class="row">
                 <h2>Seleccione el estado de los siguientes elementos</h2>
                 <div class="col-md-3 mb-3">
@@ -280,24 +278,27 @@ if (!isset($_SESSION['id_usuario'])) {
                 </div>
             </div>
             <div class="row">
-                    <div class="col-md-3 mb-3">
-                        <label class="form-label" for="ser_hora_entrada">Hora de entrada</label>
-                        <br>
-                        <input type="time" class="" name="hora_entrada">
-                    </div>
-                    <div class="col-md-3 mb-3">
-                        <label class="form-label" for="ser_hora_salida">Hora de salida</label>
-                        <br>
-                        <input type="time" class="" name="hora_salida" id="hora_salida">
-                    </div>
-                    <div class="col-md-3 mb-3">
-                        <label class="form-label" for="fecha_servicio">Fecha servicio</label>
-                        <br>
+                <div class="col-md-3 mb-3">
+                    <label class="form-label" for="ser_hora_entrada">Hora de entrada</label>
+                    <br>
+                    <input type="time" class="" name="hora_entrada">
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label class="form-label" for="ser_hora_salida">Hora de salida</label>
+<br>
+                    <input type="time" class="" name="hora_salida" id="hora_salida">
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label class="form-label" for="fecha_servicio">Fecha servicio</label>
+                    <br>
                     <input type="date" name="fecha_servicio" id="fecha_servicio">
                 </div>
-                </div>
+            </div>
             <div class="row">
-                
+                <div class="col-md-4 mb-3">
+                    <label class="form-label">Observaciones</label>
+                    <input type="text" class="form-control" name="ser_observaciones" placeholder="El dispositivos tine...">
+                </div>
             </div>
             <div class="row md-3 mb-3">
                 <div class="text-center mb-4">

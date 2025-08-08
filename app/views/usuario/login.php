@@ -16,7 +16,7 @@
 </head>
 <header>
     <div class="logo text-center">
-        <img src="/public/img/Logocompleto.png" class="m-3" alt="Logo SoftGen" height="90px">
+        <img src="../public/img/Logocompleto.png" class="m-3" alt="Logo SoftGen" height="90px">
     </div>
 </header>
 <body>

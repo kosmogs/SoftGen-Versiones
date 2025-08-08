@@ -11,6 +11,9 @@ if (!isset($_SESSION['id_usuario']) || $_SESSION['id_rol'] != 2) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panel de Técnico - SoftGen</title>
+
+    <link rel="stylesheet" href="../public/css/dashtecnico.css">
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Saira:wght@400;500;700&display=swap" rel="stylesheet">
@@ -21,11 +24,11 @@ if (!isset($_SESSION['id_usuario']) || $_SESSION['id_rol'] != 2) {
 </head>
 <body>
 
-    <header class="bg-dark text-white shadow-sm">
+    <header class=" shadow-sm">
         <div class="container py-3 d-flex justify-content-between align-items-center">
             <div>
                 <a class="navbar-brand" href="#">
-                    <img src="/softGenn/public/img/Logo completo.png" alt="Logo SoftGen" height="50">
+                    <img src="../public/img/Logocompleto.png" alt="Logo SoftGen" height="50">
                 </a>
             </div>
             <div class="text-end">
@@ -41,7 +44,11 @@ if (!isset($_SESSION['id_usuario']) || $_SESSION['id_rol'] != 2) {
         <div class="row text-center mb-5">
             <div class="col-md-12">
                 <h1>Mi Panel de Trabajo</h1>
+                
                 <p class="lead">Aquí puedes gestionar tus informes de servicio.</p>
+            </div>
+            <div class="col">
+                <img src="../public/img/ICONO2.png" alt="Icono de softgen" class="imagen-rebotando">
             </div>
         </div>
 
