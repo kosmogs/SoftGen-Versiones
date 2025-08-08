@@ -96,4 +96,17 @@ document.addEventListener('DOMContentLoaded', function() {
     } else {
         console.error("El formulario con id 'loginForm' no se encontró.");
     }
+    //Icono para cambiar vista entre contraseña y texto
+    const passwordField = document.getElementById('passwordField');
+        const togglePassword = document.getElementById('togglePassword');
+
+        togglePassword.addEventListener('click', function() {
+            // Determina el nuevo tipo del input
+            const type = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordField.setAttribute('type', type);
+            // Cambia el icono del ojo
+            this.textContent = (type === 'password') ? '👁' : '🐸';
+        });
+    
+            
 });

@@ -43,8 +43,11 @@
                             <input type="email" class="form-control" placeholder="Email" name="correo" required>
                         </div>
 
-                        <div class="mb-3">
-                            <input type="password" class="form-control" placeholder="Contraseña" name="contrasena" required>
+                        <div class="mb-3 col-12">
+                            <div class="password-wrapper">
+                                <input type="password" id="passwordField" class="form-control" placeholder="Contraseña" name="contrasena" required>
+                                <span class="toggle-password" id="togglePassword" style="position: absolute;">👁</span>
+                            </div>
                         </div>
 
                         <div class="mb-3 text-center">
