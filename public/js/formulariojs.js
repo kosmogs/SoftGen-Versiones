@@ -51,29 +51,45 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Manejar clics en el botón "Anterior"
     form.querySelectorAll('.prev-btn').forEach(button => { //
-        button.addEventListener('click', () => { //
-            if (currentStep > 0) { //
-                currentStep--; //
-                updateSteps(); //
-            }
-        }); //
-    }); //
+        button.addEventListener('click', () => { 
+            let allFieldsValid = true; // Variable para rastrear la validez
 
-    // Manejar el envío final del formulario
-    form.addEventListener('submit', function(event) {
-        event.preventDefault(); // IMPORTANTE: Mantenemos esto para controlar el envío con JS
-
-        // Validación final del último paso (ya la tienes, solo la reafirmo)
-        const lastStepRequiredInputs = steps[currentStep].querySelectorAll('[required]'); //
-        let lastStepValid = true; //
-        lastStepRequiredInputs.forEach(input => { //
-            if (!input.value.trim()) { //
-                input.classList.add('is-invalid'); //
-                lastStepValid = false; //
-            } else { //
-                input.classList.remove('is-invalid'); //
+        // IMPORTANTE: Asumiendo que el paso de "Datos del equipo" es el segundo (índice 1)
+        // Si es otro paso, cambia el número (ej. si es el tercer paso, usa currentStep === 2)
+        if (currentStep === 1) { 
+            const equipos = steps[currentStep].querySelectorAll('.equipo-group');
+            
+            // Si no hay ningún formulario de equipo, el paso es válido
+            if (equipos.length === 0) {
+                allFieldsValid = true;
+            } else {
+                // Itera sobre cada grupo de equipo por separado
+                for (const equipo of equipos) {
+                    const inputsRequeridosDelGrupo = equipo.querySelectorAll('[required]');
+                    for (const input of inputsRequeridosDelGrupo) {
+                        if (!input.value.trim()) {
+                            input.classList.add('is-invalid');
+                            allFieldsValid = false; // Si un solo input falla, todo el paso falla
+                        } else {
+                            input.classList.remove('is-invalid');
+                        }
+                    }
+                }
             }
-        }); //
+        }else {
+            // --- Lógica de validación ORIGINAL para los demás pasos ---
+            let requiredInputs = steps[currentStep].querySelectorAll('[required]');
+            requiredInputs.forEach(input => {
+                if (!input.value.trim()) {
+                    input.classList.add('is-invalid');
+                    allFieldsValid = false;
+                } else {
+                    input.classList.remove('is-invalid');
+                }
+            });
+        }
+
+
 
         if (!lastStepValid) {
             alert('Por favor, completa todos los campos requeridos antes de finalizar el reporte.');

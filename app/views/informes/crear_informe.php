@@ -12,16 +12,13 @@ if (!isset($_SESSION['id_usuario'])) {
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-
     <link href="https://fonts.googleapis.com/css2?family=Saira:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
 
-    <link rel="stylesheet" href="/softGenn/public/css/estiloequipo.css">
+    <link rel="stylesheet" href="../public/css/estiloequipo.css">
     
-
-
     <link rel="stylesheet" href="../public/css/cssBoostrap/bootstrap.min.css">
     <link rel="stylesheet" href="../public/css/jsBoostrap/bootstrap.min.js">
 
@@ -163,13 +160,42 @@ if (!isset($_SESSION['id_usuario'])) {
             </div>
 
             <div class="text-center mt-4">
-                <button type="button" class="btn next-btn" style="background-color:#135787" style="color: white;"  >Siguiente <i class="bi bi-caret-right-fill"></i></button>
+                <button type="button" class="btn next-btn" style="background-color:#135787" style="color: white;">Siguiente <i class="bi bi-caret-right-fill"></i></button>
+            </div>
+        </div>
+        <div class="step" id="step2">
+            <h5 class="mb-3">2.Datos del equipo</h5>
+            <div id="equipos-container">
+                <div class="equipo-group mb-3">
+                    <div class="row">
+                        <div class="col-md-4"><label class="form-label">Tipo de Equipo</label><input type="text" class="form-control" name="equipos[0][tipo_equipo]" placeholder="Mini split" required></div>
+                        <div class="col-md-4"><label class="form-label">Marca</label><input type="text" class="form-control" name="equipos[0][marca]" placeholder="Lg" required></div>
+                        <div class="col-md-4"><label class="form-label">Modelo</label><input type="text" class="form-control" name="equipos[0][modelo]" placeholder="1004398" required></div>  
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4"><label class="form-label">Serie</label><input type="text" class="form-control" name="equipos[0][serie]" placeholder="AAA123" required></div>
+                        <div class="col-md-4"><label class="form-label">Refrigerante</label><input type="text" class="form-control" name="equipos[0][refrigerante]" placeholder="0l124R" required></div>
+                        <div class="col-md-4"><label class="form-label">Ubicación</label><input type="text" class="form-control" name="equipos[0][ubicacion]" placeholder="Segundo piso" required></div>
+                    </div>
+                    <hr class="mt-4">
+                </div>   
+            </div>
+            <div class="row mt-3">
+                <div class="col-md-12 col-md-2 mb-3 text-center">
+                    <button type="button" id="add-equipo-btn" class="btn btn-outline-dark mt-2">
+                        <i class="bi bi-plus-circle me-2"></i>Añadir Equipo
+                    </button>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <button type="button" class="btn prev-btn" style="background-color:#135787" style="color: white;"><i class="bi bi-caret-left-fill"></i> Anterior</button>
+                <button type="button" class="btn  next-btn" style="background-color:#135787" style="color: white;">Siguiente <i class="bi bi-caret-right-fill"></i></button>
             </div>
         </div>
 
         <!-- PASO 2: INSPECCIÓN -->
-        <div class="step" id="step2">
-            <h5 class="mb-3">2. Detalles de Inspección General</h5>
+        <div class="step" id="step3">
+            <h5 class="mb-3">3. Detalles de Inspección General</h5>
             <div class="row">
                 <div class="col-md-4 col-6 mb-2"><input class="form-check-input" type="checkbox" value="1" id="azul" name="ig_goteras"><label>Goteras </label></div>
                 <div class="col-md-4 col-6 mb-2"><input type="checkbox" class="form-check-input" name="ig_gabinete" value="1"> <label>Gabinete</label></div>
@@ -198,7 +224,7 @@ if (!isset($_SESSION['id_usuario'])) {
         </div>
     
         <!-- PASO 3: OBSERVACIONES -->
-        <div class="step" id="step3"> 
+        <div class="step" id="step4"> 
             <h5 class="md-3 mb-3"> Tipo de servicio </h5>
             <div class="row">
                 <h2>Seleccione el estado de los siguientes elementos</h2>
@@ -309,7 +335,7 @@ if (!isset($_SESSION['id_usuario'])) {
             
         </div>
 
-        <div class="step" id="step4">
+        <div class="step" id="step5">
             <h5 class="mb-3">3. Observaciones Finales</h5>
             <div class="mb-3">
                 <label for="observaciones" class="form-label">Añade aquí cualquier detalle adicional, recomendación o trabajo realizado.</label>
@@ -380,6 +406,7 @@ if (!isset($_SESSION['id_usuario'])) {
         showStep(currentStep);
     });
 </script>
+<script></script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
