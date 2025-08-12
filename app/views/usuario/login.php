@@ -33,7 +33,7 @@
                     <form action="/softGenn/public/index.php?action=iniciar_sesion" method="POST" id="loginForm " class="shadown" >
 
                         <div class="mb-2">
-                            <select name="rol" id="rol" required>
+                            <select name="rol" id="rol" class="form-select" required>
                                 <option value="">Elija su rol</option>
                                 <option value="2">Tecnico</option>
                                 <option value="1">Administrador</option>

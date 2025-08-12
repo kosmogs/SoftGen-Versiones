@@ -41,9 +41,6 @@ header {
     
 }
 
-.step #step2{
-    background-color: black;
-}
 
 .step.active {
     display: block; /* Solo mostramos el paso activo */
@@ -88,7 +85,7 @@ header {
 
 }
 
-.container.row input {
+.container.row .col-md-4 .col-6 .mb-2 input {
     border-radius: 5px 10px;
     
 }
@@ -105,10 +102,7 @@ header {
     background-color: #135787;
 }
 
-.form-check-azul:checked{
-    background-color: black ;
-    border: #135787;
-}
+
 
 .dropdown-menu > .dropdown-item:hover,
 .dropdown-menu > .dropdown-item:focus {

@@ -3,7 +3,7 @@
 
 // --- Configuración de Credenciales de la Base de Datos ---
 define('DB_HOST', '127.0.0.1'); 
-define('DB_NAME', 'bd_sofgen777');
+define('DB_NAME', 'bd_softgen777');
 define('DB_USER', 'root'); // Asegúrate de que este sea tu usuario de MySQL
 define('DB_PASS', '123456789'); // Asegúrate de que esta sea tu contraseña
 

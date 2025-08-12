@@ -137,17 +137,17 @@ class UsuarioController {
             ];
             //Holaa
             // Instanciamos los modelos.
-            $usuarioModel = new UsuarioModel();
-            $tecnicoModel = new TecnicoModel();
+            $usuarioModel = new UsuarioModel($this->db);
+            $tecnicoModel = new Tecnico($this->db);
 
             // 2. Llamar al modelo para crear el registro en la tabla 'usuario'.
             // El rol para un técnico es 2.
-            $nuevoUsuarioId = $usuarioModel->crearUsuario($datosNuevoUsuario, 2);
+            $nuevoUsuarioId = $usuarioModel->crearUsuario($datosNuevoUsuario);
 
             if ($nuevoUsuarioId) {
                 // 3. Si el usuario se creó, ahora creamos el registro en la tabla 'tecnico'.
                 // Asumimos que la empresa es la 1, esto se puede hacer dinámico después.
-                $tecnicoModel->crearTecnico($nuevoUsuarioId, 1); 
+                $tecnicoModel->crearTecnico($nuevoUsuarioId); 
 
                 // 4. Redirigir al panel de admin con un mensaje de éxito.
                 header('Location: index.php?action=admin_dashboard&status=tecnico_creado');

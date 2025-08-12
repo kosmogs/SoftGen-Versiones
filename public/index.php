@@ -2,6 +2,8 @@
 // public/index.php
 namespace Public;
 
+use App\Models\EmpresaModel;
+
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
@@ -19,17 +21,20 @@ require_once __DIR__ . '/../app/models/UsuarioModel.php';
 require_once __DIR__ .'/../app/models/Tecnico.php'; // Modelo para la gestión de técnicos
 require_once __DIR__ .'/../app/models/DashboardModel.php';
 require_once __DIR__ .'/../app/models/Servicio.php'; // Aseguramos que el modelo de servicio esté cargado
+require_once __DIR__. '/../app/models/EmpresaModel.php';
 
 // Controladores
 require_once __DIR__. '/../app/controllers/UsuarioController.php';
 require_once __DIR__. '/../app/controllers/DashboardController.php' ;
 require_once __DIR__. '/../app/controllers/ServicioController.php';
 require_once __DIR__ . '/../app/controllers/InformeController.php';
+require_once __DIR__. '/../app/controllers/empresacontroller.php';
 
 use App\Controllers\UsuarioController;
 use App\Controllers\DashboardController;
 use App\controllers\ServicioController;
 use app\controllers\InformeController;
+use App\Controllers\EmpresaController;
 
 
 // --- 2. Enrutador Básico ---
@@ -41,6 +46,7 @@ $usuarioController = new UsuarioController($db);
 $dashboardController = new DashboardController($db);
 $servicioController = new ServicioController($db);
 $informeController = new InformeController($db);
+$EmpresaController = new EmpresaController($db);
 
 
 // --- 3. Decidir qué acción ejecutar ---

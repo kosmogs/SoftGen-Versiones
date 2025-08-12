@@ -11,10 +11,10 @@ class Cliente {
     }
     
     public function getClientes() {
-        $query = "SELECT c.id_cliente, u.usu_nombre AS razon_social
+        $query = "SELECT c.id_cliente, c.cli_nit AS nit
                 FROM cliente c
-                JOIN usuario u ON c.id_usuario = u.id_usuario
-                ORDER BY u.usu_nombre ASC";
+                /*JOIN usuario u ON c.id_usuario = u.id_usuario*/
+                ORDER BY c.cli_nit ASC";
         $stmt = $this->db->prepare($query);
         $stmt->execute();
 

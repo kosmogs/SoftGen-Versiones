@@ -83,8 +83,8 @@
                         <li><a class="nav-link" href="soporte.html">Soporte</a></li>
                     </ul>
                     <ul class="navbar-nav">
-                        <li><a class="nav-link" href="javascript:void(0);" onclick="window.location.replace('/../app/views/usuario/login.php');">Cerrar sesion</a></li>
-                        <li><a class="nav-link" href="javascript:void(0);" onclick="window.location.replace('/../app/views/usuario/editar_usuario.php');">Editar</a></li>
+                        <li><a class="nav-link" href="?url=login">Cerrar sesion</a></li>
+                        <li><a class="nav-link" href="javascript:void(0);" onclick="window.location.replace('../app/views/usuario/editar_usuario.php');">Editar</a></li>
                     </ul>
                 </div>
             </div>

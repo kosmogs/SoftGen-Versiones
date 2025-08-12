@@ -3,13 +3,14 @@
 namespace App\Controllers;
 
 use App\Models\DashboardModel;
+use PDO;
 
 require_once __DIR__.'/../models/DashboardModel.php';
 class DashboardController {
 
     private $dashboardModel;
 
-    public function __construct() {
+    public function __construct(PDO $db) {
     $this->dashboardModel = new DashboardModel();
     }
 

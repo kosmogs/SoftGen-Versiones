@@ -13,7 +13,7 @@ if (!isset($_SESSION['id_usuario'])) {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <link href="https://fonts.googleapis.com/css2?family=Saira:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<!--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"> -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
 
@@ -56,13 +56,13 @@ if (!isset($_SESSION['id_usuario'])) {
             <div class="row">
                 <div class="col-md-12 mb-3">
                     <label for="selectCliente" class="form-label">Cliente</label>
-                    <select class="form-select" name="cliente_id" id="selectCliente">
+                    <select class="form-select" name="cliente_id" id="selectCliente" required>
                         <option value="">Seleccione un cliente</option>
                         <?php if (isset($clientes) && is_array($clientes) && !empty($clientes)): ?>
                             <?php foreach ($clientes as $cliente): ?>
                                 <!-- El modelo ya nos da 'cli_nombre' correctamente. -->
                                 <option value="<?= htmlspecialchars($cliente['id_cliente']) ?>">
-                                    <?= htmlspecialchars($cliente['razon_social']) ?>
+                                    <?= htmlspecialchars($cliente['nit']) ?>
                                 </option>
                             <?php endforeach; ?>
                         <?php else: ?>
@@ -78,6 +78,22 @@ if (!isset($_SESSION['id_usuario'])) {
                             Asegúrate de que existan usuarios con el rol 'Cliente' y que estos tengan un registro asociado en la tabla `cliente`. La consulta actual busca clientes que existan en ambas tablas.
                         </div>
                     <?php endif; ?>
+                </div>
+                <div class="col-md-12 mb-3">
+                    <label for="selecEmpresa" class="form-label">Empresa</label>
+                    <select class="form-select" name="empresa_id" id="selectEmpresa" required>
+                        <option value="">Selecione una empresa</option>
+                        <?php if (isset($empresas) && is_array($empresas)&& !empty($empresas)):?>
+                            <?php foreach ($empresas as $empresa):?>
+                                <option value="<?= htmlspecialchars($empresa['id_empresa'])?>">
+                                    <?= htmlspecialchars($empresa['razon_social'])?>
+                                </option>
+                            <?php endforeach;?>
+                            <?php else: ?>
+                            <!-- Se muestra si el array de clientes está vacío -->
+                            <option value="" disabled>No hay empresas disponibles</option>
+                        <?php endif;?>
+                    </select>
                 </div>
             </div>
             <div class="row">
@@ -128,7 +144,7 @@ if (!isset($_SESSION['id_usuario'])) {
             <div class="row">
                 <div class="col-md-6 mb-3">
                     <label for="departamento" class="form-label">Departamento</label>
-                    <select class="form-select" name="ubi_departamento" id="departamento" required>
+                    <select class="form-select" name="ubi_departamento" id="departamento" required >
                         <?php if (isset($departamentos) && is_array($departamentos)): ?>
                             <?php foreach ($departamentos as $depto): ?>
                                 <option value="<?= htmlspecialchars($depto); ?>">
@@ -406,7 +422,7 @@ if (!isset($_SESSION['id_usuario'])) {
         showStep(currentStep);
     });
 </script>
-<script></script>
+<script src="../public/js/javaequipo.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 

@@ -13,6 +13,7 @@ require_once __DIR__ . '/../models/UsuarioModel.php';
 require_once __DIR__ . '/../models/inspeccion_general.php';
 require_once __DIR__ . '/../models/Informe.php';
 require_once __DIR__ . '/../models/Tecnico.php';
+require_once __DIR__.  '/../models/EmpresaModel.php';
 require_once __DIR__ . '/../models/ServicioModel.php';
 //require_once __DIR__ . '/../../vendor/autoload.php';
 //require_once __DIR__ . '/../../vendor/mpdf/mpdf';
@@ -25,13 +26,14 @@ use App\models\inspeccion_general;
 use App\Models\Informe;
 use App\Models\Tecnico;
 use App\Models\ServicioModel;
+use App\Models\EmpresaModel;
 use Composer\Autoload;
 use Mpdf\Mpdf;
 use PDO;
 
 class InformeController {
     private $conn;
-    private $clienteModel, $servicio, $ubicacionModel, $servicioModel, $informeModel, $tecnicoModel, $inspeccionGeneralModel;
+    private $clienteModel, $servicio, $ubicacionModel, $servicioModel, $informeModel, $tecnicoModel, $inspeccionGeneralModel, $EmpresaModel;
     
 
     public function __construct(PDO $db) {
@@ -43,6 +45,7 @@ class InformeController {
         $this->informeModel = new Informe($this->conn);
         $this->tecnicoModel = new Tecnico($this->conn);
         $this->inspeccionGeneralModel = new inspeccion_general($this->conn);
+        $this->EmpresaModel = new EmpresaModel($this->conn);
     }
 
     public function mostrarFormulario() {
@@ -72,6 +75,11 @@ class InformeController {
 
         //mostrar tipo de informe select crear informe
         $tipo_informe = $this->servicioModel->mostrarTipoInforme();
+
+        //mostrar empresa selecr crear informe
+        $empresas = $this->EmpresaModel->obtenerEmpresa();
+
+
 
         // 3. Cargar la vista con las variables correctas ($clientes y $departamentos).
         require __DIR__ . '/../views/informes/crear_informe.php';

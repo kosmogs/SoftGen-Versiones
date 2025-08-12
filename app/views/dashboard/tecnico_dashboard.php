@@ -13,8 +13,10 @@ if (!isset($_SESSION['id_usuario']) || $_SESSION['id_rol'] != 2) {
     <title>Panel de Técnico - SoftGen</title>
 
     <link rel="stylesheet" href="../public/css/dashtecnico.css">
+    <link rel="stylesheet" href="../public/css/cssBoostrap/bootstrap.min.css">
+
     
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Saira:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
@@ -128,6 +130,8 @@ if (!isset($_SESSION['id_usuario']) || $_SESSION['id_rol'] != 2) {
     </main>
     <?php 
         require_once '/../xampp/htdocs/softgenn/public/headerandfoother/foother1.php';
+        
     ?>
+    <script src="../public/css/jsBoostrap/Bootstrap.min.js"></script>
 </body>
 </html>
