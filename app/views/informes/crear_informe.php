@@ -62,7 +62,7 @@ if (!isset($_SESSION['id_usuario'])) {
                             <?php foreach ($clientes as $cliente): ?>
                                 <!-- El modelo ya nos da 'cli_nombre' correctamente. -->
                                 <option value="<?= htmlspecialchars($cliente['id_cliente']) ?>">
-                                    <?= htmlspecialchars($cliente['nit']) ?>
+                                    <?= htmlspecialchars($cliente['razon_social']) ?>
                                 </option>
                             <?php endforeach; ?>
                         <?php else: ?>
