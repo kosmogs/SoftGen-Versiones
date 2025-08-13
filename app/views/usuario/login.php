@@ -51,7 +51,7 @@
                         </div>
 
                         <div class="mb-3 text-center">
-                            <a href="index.php?action=mostrar_recuperar_contrasena">¿Olvidó su contraseña?</a>
+                            <a href="index.php?action=solicitar_reset">¿Olvidó su contraseña?</a>
                         </div>
 
                         <div class="d-grid gap-2 mb-3">

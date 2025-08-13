@@ -224,15 +224,14 @@ class UsuarioController {
         }
     }
 
-    
-    
+    // Mostrar formulario de solicitud de restablecimiento de contraseña
     public function mostrarFormularioSolicitud() {
         require_once '../app/views/usuario/solicitar_reset.php';
     }
 
     public function procesarSolicitud() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $email = $_POST['correo'];
+            $email = $_POST['usu_correo'];
             $usuario = $this->usuarioModel->buscarPorCorreo($email);
 
             if ($usuario) {
@@ -267,7 +266,7 @@ class UsuarioController {
 
         if ($tokenData) {
             // El token es válido, mostramos el formulario
-            $email = $tokenData['email'];
+            $email = $tokenData['usu_correo'];
             require_once '../app/views/usuario/resetear_contrasena.php';
         } else {
             die("Token inválido o expirado.");
@@ -276,13 +275,13 @@ class UsuarioController {
 
     public function procesarReset() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $email = $_POST['email'];
+            $email = $_POST['usu_correo'];
             $token = $_POST['token'];
             $nuevaContrasena = $_POST['contrasena'];
 
             $tokenData = $this->usuarioModel->buscarTokenValido($token);
 
-            if ($tokenData && $tokenData['email'] === $email) {
+            if ($tokenData && $tokenData['usu_correo'] === $email) {
                 // Si el token es válido y corresponde al email, actualizamos la contraseña.
                 $this->usuarioModel->actualizarContrasena($email, $nuevaContrasena);
                 // Eliminamos el token para que no se pueda volver a usar.

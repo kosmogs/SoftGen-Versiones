@@ -62,6 +62,21 @@ switch ($action) {
         $usuarioController->cerrarSesion();
         break;
 
+    //Password reset
+        case 'solicitar_reset': 
+        $usuarioController->mostrarFormularioSolicitud(); 
+        break;
+    case 'procesar_solicitud': 
+        $usuarioController->procesarSolicitud(); 
+        break;
+    case 'mostrar_formulario_reset': 
+        $usuarioController->mostrarFormularioReset(); 
+        break;
+    case 'procesar_reset': 
+        $usuarioController->procesarReset(); 
+        break;
+    
+
     // --- Rutas de Dashboards ---
     case 'dashboard_admin':
         $dashboardController->showAdminDashboard();

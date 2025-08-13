@@ -10,7 +10,7 @@ class UsuarioModel {
 
     public function __construct(PDO $db) {
        // $this->db = getDbConnection();
-       $this->db = $db;
+        $this->db = $db;
     }
 
     // --- Métodos de Lectura (Read) ---
@@ -114,5 +114,57 @@ class UsuarioModel {
 
         $stmtUsuario = $this->db->prepare("DELETE FROM usuario WHERE id_usuario = ?");
         return $stmtUsuario->execute([$id]);
+    }
+    // --- Método para verificar contraseña ---
+
+            public function guardarTokenReset($email, $token) {
+        // MUY IMPORTANTE: Guardamos un HASH del token, no el token en texto plano.
+        $tokenHash = password_hash($token, PASSWORD_DEFAULT);
+        $expiraEn = date('Y-m-d H:i:s', strtotime('+1 hour')); // El token es válido por 1 hora.
+
+        $sql = "INSERT INTO password_resets (usu_correo, token, expires_at) VALUES (?, ?, ?)";
+        $stmt = $this->db->prepare($sql);
+        return $stmt->execute([$email, $tokenHash, $expiraEn]);
+    }
+
+    /**
+     * Busca un token válido en la base de datos.
+     * @param string $token El token que el usuario proporciona.
+     * @return array|false Los datos del token si es válido, o false si no.
+     */
+    public function buscarTokenValido($token) {
+        $todosLosTokens = $this->db->query("SELECT * FROM password_resets WHERE expires_at > NOW()")->fetchAll();
+        
+        foreach ($todosLosTokens as $tokenData) {
+            // Comparamos el token del usuario con el hash guardado en la BD.
+            if (password_verify($token, $tokenData['token'])) {
+                return $tokenData;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Actualiza la contraseña de un usuario.
+     * @param string $email El correo del usuario.
+     * @param string $nuevaContrasena La nueva contraseña sin hashear.
+     * @return bool
+     */
+    public function actualizarContrasena($email, $nuevaContrasena) {
+        $contrasenaHasheada = password_hash($nuevaContrasena, PASSWORD_DEFAULT);
+        $sql = "UPDATE usuario SET usu_contrasena = ? WHERE usu_correo = ?";
+        $stmt = $this->db->prepare($sql);
+        return $stmt->execute([$contrasenaHasheada, $email]);
+    }
+
+    /**
+     * Elimina un token de la base de datos una vez que ha sido usado.
+     * @param string $email El correo asociado al token.
+     * @return bool
+     */
+    public function eliminarToken($email) {
+        $sql = "DELETE FROM password_resets WHERE usu_correo = ?";
+        $stmt = $this->db->prepare($sql);
+        return $stmt->execute([$email]);
     }
 }
