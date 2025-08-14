@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 13-08-2025 a las 01:30:30
+-- Tiempo de generación: 14-08-2025 a las 14:36:18
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.1.25
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `bd_softgen777`
+-- Base de datos: `bd_softgen7777`
 --
 
 -- --------------------------------------------------------
@@ -32,20 +32,19 @@ CREATE TABLE `cliente` (
   `razon_social` varchar(100) DEFAULT NULL,
   `cli_nit` varchar(20) DEFAULT NULL,
   `id_ubicacion` int(11) DEFAULT NULL,
-  `id_usuario` int(11) DEFAULT NULL,
-  `cli_contacto_nombre` varchar(50) DEFAULT NULL,
-  `cli_contacto_correo` varchar(50) DEFAULT NULL,
-  `cli_contacto_telefono` varchar(20) DEFAULT NULL
+  `contacto_nombre` varchar(50) DEFAULT NULL,
+  `contacto_correo` varchar(50) DEFAULT NULL,
+  `contacto_telefono` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `cliente`
 --
 
-INSERT INTO `cliente` (`id_cliente`, `razon_social`, `cli_nit`, `id_ubicacion`, `id_usuario`, `cli_contacto_nombre`, `cli_contacto_correo`, `cli_contacto_telefono`) VALUES
-(1, 'Exitos s.a.s', '12344658A', 1, NULL, 'exito', 'exito@gmail.com', '3210584'),
-(2, 'Servicio nacional de aprendizaje', '09364839B', 2, NULL, 'sena', 'sena@edu.com', '3298503981'),
-(3, 'Innovar aire y energia', '98042662428', 3, NULL, 'innovar', 'ino@gmail.com', '3100800283');
+INSERT INTO `cliente` (`id_cliente`, `razon_social`, `cli_nit`, `id_ubicacion`, `contacto_nombre`, `contacto_correo`, `contacto_telefono`) VALUES
+(1, 'Exitos s.a.s', '12344658A', NULL, 'exito', 'exito@gmail.com', '3210584'),
+(2, 'Servicio nacional de aprendizaje', '09364839B', NULL, 'sena', 'sena@edu.com', '3298503981'),
+(3, 'Innovar aire y energia', '98042662428', NULL, 'innovar', 'ino@gmail.com', '3100800283');
 
 -- --------------------------------------------------------
 
@@ -69,7 +68,7 @@ CREATE TABLE `empresa` (
 
 INSERT INTO `empresa` (`id_empresa`, `emp_razon_social`, `emp_nit`, `emp_correo`, `emp_telefono`, `emp_logo`, `id_ubicacion`) VALUES
 (1, 'Almacenes exito', '1294759202', 'exito@gmail.com', '312859604', 'loguito', NULL),
-(2, 'Servicio nacional de aprendizaje', '1223009684', '30004860292', 'sena@soy.sena.edu.co', 'loguito', NULL),
+(2, 'Servicio nacional de aprendizaje', '1223009684', 'sena@soy.sena.edu.co', '319305820', 'loguito', NULL),
 (3, 'Goyurt', '00034578', 'yurtgo@gmail.com', '3121230494', 'loguito', NULL);
 
 -- --------------------------------------------------------
@@ -202,13 +201,25 @@ CREATE TABLE `servicio` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `servicio_equipo`
+--
+
+CREATE TABLE `servicio_equipo` (
+  `id_servicio_equipo` int(11) NOT NULL,
+  `id_servicio` int(11) NOT NULL,
+  `id_equipo` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `tecnico`
 --
 
 CREATE TABLE `tecnico` (
   `id_tecnico` int(11) NOT NULL,
   `id_usuario` int(11) DEFAULT NULL,
-  `id_empresa` int(11) DEFAULT NULL
+  `id_rol` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -235,7 +246,7 @@ CREATE TABLE `ubicacion` (
 INSERT INTO `ubicacion` (`id_ubicacion`, `ubi_sitio`, `ubi_ciudad`, `ubi_departamento`, `ubi_localidad`, `ubi_barrio`, `ubi_calle`, `ubi_numero`) VALUES
 (1, 'Oficina', 'Bucaramanga', 'Santander', 'pie de cuesta', 'Mira flor', 'cr22 #48', '14'),
 (2, 'edificio central', 'Bogota', 'Cundinamarca', 'Bosa', 'San bernardino', 'cr 33', '8'),
-(3, 'segundo pieso', 'Cartagena', 'Bolívar', 'playa', 'barrio nuevo', 'cr21 #5', '#68');
+(3, 'segundo piso', 'Cartagena', 'Bolívar', 'playa', 'barrio nuevo', 'cr21 #5', '#68');
 
 -- --------------------------------------------------------
 
@@ -255,6 +266,14 @@ CREATE TABLE `usuario` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
+-- Volcado de datos para la tabla `usuario`
+--
+
+INSERT INTO `usuario` (`id_usuario`, `id_rol`, `usu_nombre`, `usu_apellido`, `usu_doc_identidad`, `usu_telefono`, `usu_correo`, `usu_contrasena`) VALUES
+(1, 2, 'Dajaryth', 'Hernandez', '1096803380', '32243202092', 'yenerys@gmail.com', '$2y$10$yqv9aZXf65GW3w4HJh5/MO/aRF1sh.wRp6mVTdSm5zSLgyGxscYoC'),
+(2, 1, 'Harold', 'Peñaloza', '10925474614', '99999999999', 'hp@gmail.com', '$2y$10$rMT96FG/uIJXOteBfXBLf.UpAp.jx5Fo9zQPZdkPYCyc.DdMFTUVy');
+
+--
 -- Índices para tablas volcadas
 --
 
@@ -263,8 +282,7 @@ CREATE TABLE `usuario` (
 --
 ALTER TABLE `cliente`
   ADD PRIMARY KEY (`id_cliente`),
-  ADD KEY `id_ubicacion` (`id_ubicacion`),
-  ADD KEY `id_usuario` (`id_usuario`);
+  ADD KEY `id_ubicacion` (`id_ubicacion`);
 
 --
 -- Indices de la tabla `empresa`
@@ -323,11 +341,19 @@ ALTER TABLE `servicio`
   ADD KEY `id_revision_mecanica` (`id_revision_mecanica`);
 
 --
+-- Indices de la tabla `servicio_equipo`
+--
+ALTER TABLE `servicio_equipo`
+  ADD PRIMARY KEY (`id_servicio_equipo`),
+  ADD KEY `id_servicio` (`id_servicio`),
+  ADD KEY `id_equipo` (`id_equipo`);
+
+--
 -- Indices de la tabla `tecnico`
 --
 ALTER TABLE `tecnico`
   ADD PRIMARY KEY (`id_tecnico`),
-  ADD KEY `id_empresa` (`id_empresa`),
+  ADD KEY `id_empresa` (`id_rol`),
   ADD KEY `id_usuario` (`id_usuario`);
 
 --
@@ -342,6 +368,7 @@ ALTER TABLE `ubicacion`
 ALTER TABLE `usuario`
   ADD PRIMARY KEY (`id_usuario`),
   ADD UNIQUE KEY `usu_correo` (`usu_correo`),
+  ADD UNIQUE KEY `usu_correo_2` (`usu_correo`),
   ADD KEY `id_rol` (`id_rol`);
 
 --
@@ -382,7 +409,7 @@ ALTER TABLE `inspeccion_general`
 -- AUTO_INCREMENT de la tabla `password_resets`
 --
 ALTER TABLE `password_resets`
-  MODIFY `id_password_resets` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_password_resets` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `revision_mecanica`
@@ -403,6 +430,12 @@ ALTER TABLE `servicio`
   MODIFY `id_servicio` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT de la tabla `servicio_equipo`
+--
+ALTER TABLE `servicio_equipo`
+  MODIFY `id_servicio_equipo` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de la tabla `tecnico`
 --
 ALTER TABLE `tecnico`
@@ -418,7 +451,7 @@ ALTER TABLE `ubicacion`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Restricciones para tablas volcadas
@@ -428,8 +461,7 @@ ALTER TABLE `usuario`
 -- Filtros para la tabla `cliente`
 --
 ALTER TABLE `cliente`
-  ADD CONSTRAINT `cliente_ibfk_1` FOREIGN KEY (`id_ubicacion`) REFERENCES `ubicacion` (`id_ubicacion`),
-  ADD CONSTRAINT `cliente_ibfk_2` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`);
+  ADD CONSTRAINT `cliente_ibfk_1` FOREIGN KEY (`id_ubicacion`) REFERENCES `ubicacion` (`id_ubicacion`);
 
 --
 -- Filtros para la tabla `empresa`
@@ -460,10 +492,17 @@ ALTER TABLE `servicio`
   ADD CONSTRAINT `servicio_ibfk_5` FOREIGN KEY (`id_revision_mecanica`) REFERENCES `revision_mecanica` (`id_revision_mecanica`);
 
 --
+-- Filtros para la tabla `servicio_equipo`
+--
+ALTER TABLE `servicio_equipo`
+  ADD CONSTRAINT `servicio_equipo_ibfk_1` FOREIGN KEY (`id_servicio`) REFERENCES `servicio` (`id_servicio`),
+  ADD CONSTRAINT `servicio_equipo_ibfk_2` FOREIGN KEY (`id_equipo`) REFERENCES `equipo` (`id_equipo`);
+
+--
 -- Filtros para la tabla `tecnico`
 --
 ALTER TABLE `tecnico`
-  ADD CONSTRAINT `tecnico_ibfk_1` FOREIGN KEY (`id_empresa`) REFERENCES `empresa` (`id_empresa`),
+  ADD CONSTRAINT `tecnico_ibfk_1` FOREIGN KEY (`id_rol`) REFERENCES `empresa` (`id_empresa`),
   ADD CONSTRAINT `tecnico_ibfk_2` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`);
 
 --

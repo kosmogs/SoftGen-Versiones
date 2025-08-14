@@ -63,7 +63,18 @@ if (!isset($_SESSION['id_usuario']) || $_SESSION['id_rol'] != 2) {
                         <h5 class="card-title">Crear Nuevo Informe</h5>
                         <p class="card-text">Inicia un nuevo informe de servicio para un cliente.</p>
                         <!-- ENLACE FUNCIONAL -->
-                        <a href="/softGenn/public/index.php?action=crear_informe" class="btn btn-primary stretched-link">Iniciar Ahora</a>
+                        <a href="/softGenn/public/index.php?action=crear_informe" class="btn btn-primary stretched-link">Crear Ahora</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card text-center h-100 border-primary border-2">
+                    <div class="card-body py-4">
+                        <i class="bi bi-file-earmark-plus-fill fs-1 text-primary mb-3"></i>
+                        <h5 class="card-title">Añadir quipo</h5>
+                        <p class="card-text">Registre el nuevo equipo</p>
+                        <!-- ENLACE FUNCIONAL -->
+                        <a href="#x" class="btn btn-primary stretched-link">Registrar Ahora</a>
                     </div>
                 </div>
             </div>
