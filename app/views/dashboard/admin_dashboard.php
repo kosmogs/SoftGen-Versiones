@@ -65,7 +65,7 @@ if (!isset($_SESSION['id_usuario']) || $_SESSION['id_rol'] != 1) {
         </div>
         <ul class="nav flex-column">
             <li class="nav-item">
-                <a class="nav-link active" href="/softGenn/public/index.php?action=dashboard_admin">
+                <a class="nav-link active" href="?url=admin_dashboard">
                     <i class="bi bi-speedometer2"></i>Dashboard
                 </a>
             </li>

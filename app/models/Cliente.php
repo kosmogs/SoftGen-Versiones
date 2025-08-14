@@ -39,7 +39,7 @@ class Cliente {
         if ($cliente) {
             return $cliente['id_cliente'];
         }
-        $query = "INSERT INTO cliente (razon_social, nit, correo, telefono, contacto_nombre, contacto_correo, contacto_telefono, id_usuario) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        $query = "INSERT INTO cliente (razon_social, cli_nit, contacto_nombre, contacto_correo, contacto_telefono, id_usuario) VALUES (?, ?, ?, ?, ?, ?, ?)";
         $stmt = $this->db->prepare($query);
         $stmt->execute([$data['razon_social'] ?? '', $data['codigo'] ?? '', $data['nit'] ?? '', $data['direccion'] ?? '', $data['ciudad'] ?? '', $data['telefono'] ?? '', $data['id_usuario'] ?? null]);
         return $this->db->lastInsertId();
