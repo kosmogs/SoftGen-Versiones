@@ -2,29 +2,29 @@
 namespace App\Controllers;
 
 require_once __DIR__ . '/../models/equipo.php';
-require_once __DIR__. '/../../config';
+use app\Models\equipo;
+
 
 use PDO;
 class equipocontroller{
+    private $equipo;
+
 
     public function __construct(PDO $db){
         $this->equipo = new equipo($db);
     }
     public function listarEquipos(){
-        $database = new ();
-        $db = $database->getConnection();
-
-        $equipo = new equipo($db);
-
-        $stmt = $equipo->leer();
+        $stmt = $this->equipo->listar();
         $num = $stmt->rowCount();
 
+
         if($num > 0){
-            $equipo_arr = array();
+            $equipos_arr = array();
+            $equipos_arr["records"] = array();
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
                 extract($row);
                 $equipo_item = array(
-                    "id_equipo" => $id,
+                    "id_equipo" => $id_equipo,
                     "equi_tipo_equipo" => $equi_tipo_equipo,
                     "equi_marca" => $equi_marca,
                     "equi_modelo" => $equi_modelo,
@@ -33,12 +33,17 @@ class equipocontroller{
 
                 );
 
-                array_push($equipos_arr, $equi_item);
+                array_push($equipos_arr["records"], $equipo_item);
             }
 
-            print_r($equipos_arr);
+            http_response_code(200);
+            echo json_encode($equipos_arr);
+
         }else{
-            echo"No se encontraron equipo.";
+            http_response_code(404);
+            echo json_encode(
+                array ( "No se encontraron equipos.")
+            );
         }
     }
 }

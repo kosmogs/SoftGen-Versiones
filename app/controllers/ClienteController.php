@@ -1,8 +1,10 @@
 <?php
 // app/controllers/ClienteController.php
 namespace App\Controllers;
-
+use PDO;
 class ClienteController {
+
+    public $db;
     private $clienteModel;
 
     public function __construct() {

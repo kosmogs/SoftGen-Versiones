@@ -74,7 +74,7 @@ if (!isset($_SESSION['id_usuario']) || $_SESSION['id_rol'] != 2) {
                         <h5 class="card-title">Añadir quipo</h5>
                         <p class="card-text">Registre el nuevo equipo</p>
                         <!-- ENLACE FUNCIONAL -->
-                        <a href="#x" class="btn btn-primary stretched-link">Registrar Ahora</a>
+                        <a href="/softGenn/public/index.php?action=crearequipo" class="btn btn-primary stretched-link">Registrar Ahora</a>
                     </div>
                 </div>
             </div>

@@ -19,10 +19,10 @@
         $this->db = $db;
     }
 
-    public function crear($equi_tipo_equipo, $equi_marca, $equi_modelo, $equi_serie, $equi_cantidad){
+    public function crearequipo($equi_tipo_equipo, $equi_marca, $equi_modelo, $equi_serie, $equi_cantidad){
         $query = "insert into". $this->equipo ."(equi_tipo_equipo, equi_marca, equi_modelo, equi_serie, equi_cantidad) values (:equi_tipo_equipo, :equi_marca, :equi_modelo, :equi_serie, :equi_cantidad)";
 
-        $stmt = $this->conn->prepare($query);
+        $stmt = $this->db->prepare($query);
         //intección sql
         $equi_tipo_equipo = htmlspecialchars(strip_tags($equi_tipo_equipo));
         $equi_marca = htmlspecialchars(strip_tags($equi_marca));
@@ -47,6 +47,8 @@
 
     }
 
+    
+
     public function obtenerPorId($id_equipo){
         $query = "SELECT equi_tipo_equipo, equi_marca, equi_serie". $this->equipo . "WHERE id_equipo = ? Limit 0.1";
 
@@ -62,6 +64,15 @@
             $this->equi_serie = $row['Serie'];
 
         }
+    }
+
+    public function listar(){
+        $query = "select id_equipo, equi_tipo_equipo, equi_marca, equi_modelo, equi_serie, equi_cantidad FROM equipo  ORDER BY id_equipo DESC";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+
+        return $stmt;
     }
 }
 ?>

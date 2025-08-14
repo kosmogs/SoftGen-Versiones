@@ -22,6 +22,7 @@ require_once __DIR__ .'/../app/models/Tecnico.php'; // Modelo para la gestión d
 require_once __DIR__ .'/../app/models/DashboardModel.php';
 require_once __DIR__ .'/../app/models/Servicio.php'; // Aseguramos que el modelo de servicio esté cargado
 require_once __DIR__. '/../app/models/EmpresaModel.php';
+require_once __DIR__. '/../app/models/equipo.php';
 
 // Controladores
 require_once __DIR__. '/../app/controllers/UsuarioController.php';
@@ -29,12 +30,14 @@ require_once __DIR__. '/../app/controllers/DashboardController.php' ;
 require_once __DIR__. '/../app/controllers/ServicioController.php';
 require_once __DIR__ . '/../app/controllers/InformeController.php';
 require_once __DIR__. '/../app/controllers/empresacontroller.php';
+require_once __DIR__. '/../app/controllers/equipocontroller.php';
 
 use App\Controllers\UsuarioController;
 use App\Controllers\DashboardController;
 use App\controllers\ServicioController;
 use app\controllers\InformeController;
 use App\Controllers\EmpresaController;
+use App\Controllers\equipocontroller;
 
 
 // --- 2. Enrutador Básico ---
@@ -47,6 +50,7 @@ $dashboardController = new DashboardController($db);
 $servicioController = new ServicioController($db);
 $informeController = new InformeController($db);
 $EmpresaController = new EmpresaController($db);
+$equipocontroller = new equipocontroller($db);
 
 
 // --- 3. Decidir qué acción ejecutar ---
@@ -115,6 +119,10 @@ switch ($action) {
         
     case 'procesar_reporte':
         $informeController->procesarYGuardarReporte();
+        break;
+    
+    case 'listarequipo':
+        $equipocontroller->listarEquipos();
         break;
 
     case 'guardar_informe':
