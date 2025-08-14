@@ -367,7 +367,7 @@ if (!isset($_SESSION['id_usuario'])) {
 <footer>
     <div class="bg-primary">
         <?php
-           include '/xampp/htdocs/USU6/public/headerandfoother/foother1.php'; 
+           require_once '/../xampp/htdocs/softgenn/public/headerandfoother/foother1.php'; 
 
         ?>
     </div>

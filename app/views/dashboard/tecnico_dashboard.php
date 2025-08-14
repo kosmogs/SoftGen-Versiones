@@ -12,19 +12,17 @@ if (!isset($_SESSION['id_usuario']) || $_SESSION['id_rol'] != 2) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panel de Técnico - SoftGen</title>
 
-    <link rel="stylesheet" href="../public/css/dashtecnico.css">
-    <link rel="stylesheet" href="../public/css/cssBoostrap/bootstrap.min.css">
-
-    
-
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Saira:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../public/css/dashtecnico.css">
+    <link rel="stylesheet" href="../public/css/cssBoostrap/bootstrap.min.css">
     <style>
         body { font-family: 'Saira', sans-serif; background-color: #f8f9fa; }
         .stat-card { box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,.075); }
     </style>
 </head>
-<body>
+<body class="body">
 
     <header class=" shadow-sm">
         <div class="container py-3 d-flex justify-content-between align-items-center">
@@ -35,7 +33,7 @@ if (!isset($_SESSION['id_usuario']) || $_SESSION['id_rol'] != 2) {
             </div>
             <div class="text-end">
                 <span class="d-block">Bienvenido, <strong><?php echo htmlspecialchars($_SESSION['nombre_usuario']); ?></strong></span>
-                <a href="?url=login" class="btn btn-sm btn-outline-light mt-1">
+                <a href="?url=login" class="btn btn-sm btn-outline mt-1" id="botonCerrarSesion">
                     <i class="bi bi-box-arrow-right"></i> Cerrar Sesión
                 </a>
             </div>
@@ -45,9 +43,13 @@ if (!isset($_SESSION['id_usuario']) || $_SESSION['id_rol'] != 2) {
     <main class="container py-5">
         <div class="row text-center mb-5">
             <div class="col-md-12">
-                <h1>Mi Panel de Trabajo</h1>
+                <h1 class="display-4 text-center">
+                    <span class="animated-text">Mi Panel de Trabajo</span>
+                </h1>
                 
-                <p class="lead">Aquí puedes gestionar tus informes de servicio.</p>
+                <p class="lead">
+                    <span class="animated-text">Aquí puedes gestionar tus informes de servicio.</span>
+                </p>
             </div>
             <div class="col">
                 <img src="../public/img/ICONO2.png" alt="Icono de softgen" class="imagen-rebotando">
@@ -57,30 +59,30 @@ if (!isset($_SESSION['id_usuario']) || $_SESSION['id_rol'] != 2) {
         <!-- Sección de Acciones y Estadísticas -->
         <div class="row g-4 justify-content-center">
             <div class="col-md-4">
-                <div class="card text-center h-100 border-primary border-2">
-                    <div class="card-body py-4">
-                        <i class="bi bi-file-earmark-plus-fill fs-1 text-primary mb-3"></i>
+                <div class="card text-center h-100 border-2" style="border-color: #135787">
+                    <div class="card-body py-4 shadow">
+                        <i class="bi bi-file-earmark-plus-fill fs-1 mb-3"></i>
                         <h5 class="card-title">Crear Nuevo Informe</h5>
                         <p class="card-text">Inicia un nuevo informe de servicio para un cliente.</p>
                         <!-- ENLACE FUNCIONAL -->
-                        <a href="/softGenn/public/index.php?action=crear_informe" class="btn btn-primary stretched-link">Crear Ahora</a>
+                        <a href="/softGenn/public/index.php?action=crear_informe" class="btn stretched-link" style="background-color: #135787; color: white">Crear Ahora</a>
                     </div>
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="card text-center h-100 border-primary border-2">
-                    <div class="card-body py-4">
-                        <i class="bi bi-file-earmark-plus-fill fs-1 text-primary mb-3"></i>
+                <div class="card text-center h-100 border-2" style="border-color: #135787">
+                    <div class="card-body py-4 shadow">
+                        <i class="bi bi-file-earmark-plus-fill fs-1 mb-3"></i>
                         <h5 class="card-title">Añadir quipo</h5>
                         <p class="card-text">Registre el nuevo equipo</p>
                         <!-- ENLACE FUNCIONAL -->
-                        <a href="#x" class="btn btn-primary stretched-link">Registrar Ahora</a>
+                        <a href="#" class="btn stretched-link" style="background-color: #135787; color: white;">Registrar Ahora</a>
                     </div>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="card text-center bg-light h-100 stat-card">
-                    <div class="card-body">
+                    <div class="card-body shadow">
                         <h6 class="text-muted">Mis Informes Totales</h6>
                         <!-- DATO DINÁMICO -->
                         <p class="fs-2 fw-bold mb-0"><?php echo htmlspecialchars($estadisticas['total_informes'] ?? 0); ?></p>
@@ -89,7 +91,7 @@ if (!isset($_SESSION['id_usuario']) || $_SESSION['id_rol'] != 2) {
             </div>
             <div class="col-md-3">
                 <div class="card text-center bg-light h-100 stat-card">
-                    <div class="card-body">
+                    <div class="card-body shadow">
                         <h6 class="text-muted">Informes Pendientes</h6>
                         <!-- DATO DINÁMICO -->
                         <p class="fs-2 fw-bold mb-0 text-warning"><?php echo htmlspecialchars($estadisticas['informes_pendientes'] ?? 0); ?></p>
@@ -99,7 +101,7 @@ if (!isset($_SESSION['id_usuario']) || $_SESSION['id_rol'] != 2) {
         </div>
 
         <!-- Sección de Mis Últimos Informes -->
-        <section class="mt-5 pt-4">
+        <section class="mt-5 pt-4 shadow p-4">
             <h2 class="text-center mb-4">Mis Últimos Informes</h2>
             <div class="table-responsive">
                 <table class="table table-striped table-hover bg-white rounded shadow-sm">
@@ -144,5 +146,7 @@ if (!isset($_SESSION['id_usuario']) || $_SESSION['id_rol'] != 2) {
         
     ?>
     <script src="../public/css/jsBoostrap/Bootstrap.min.js"></script>
+    <script src="../../public/js/dasboardTecnico.js"></script>
+    
 </body>
 </html>
