@@ -80,7 +80,7 @@ if (!isset($_SESSION['id_usuario']) || $_SESSION['id_rol'] != 1) {
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="/softGenn/public/index.php?action=gestionar_clientes">
                     <i class="bi bi-building"></i>Gestión de Clientes
                 </a>
             </li>

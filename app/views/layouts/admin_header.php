@@ -68,7 +68,7 @@ $currentAction = $_GET['action'] ?? 'dashboard_admin';
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="/softGenn/public/index.php?action=gestionar_clientes">
                 <i class="bi bi-building"></i>Gestión de Clientes
             </a>
         </li>

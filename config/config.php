@@ -5,7 +5,7 @@
 define('DB_HOST', '127.0.0.1'); 
 define('DB_NAME', 'bd_softgen7777');
 define('DB_USER', 'root'); // Asegúrate de que este sea tu usuario de MySQL
-define('DB_PASS', '123456789'); // Asegúrate de que esta sea tu contraseña
+define('DB_PASS', ''); // Asegúrate de que esta sea tu contraseña
 
 // El juego de caracteres para la conexión
 define('DB_CHARSET', 'utf8mb4');
