@@ -2,7 +2,7 @@
 // app/controllers/ClienteController.php
 namespace App\Controllers;
 require_once __DIR__ . '/../models/Cliente.php';
-
+//Cambios hechos por Hi-Im-Harcs
 use app\models\Cliente;
 
 use PDO;

@@ -2,6 +2,7 @@
 // ===== models/Cliente.php =====
 namespace App\Models;
 use PDO;
+//Cambios hechos por Hi-Im-Harcs
 
 class Cliente {
     private $db;
