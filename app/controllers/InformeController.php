@@ -15,8 +15,7 @@ require_once __DIR__ . '/../models/Informe.php';
 require_once __DIR__ . '/../models/Tecnico.php';
 require_once __DIR__.  '/../models/EmpresaModel.php';
 require_once __DIR__ . '/../models/ServicioModel.php';
-//require_once __DIR__ . '/../../vendor/autoload.php';
-//require_once __DIR__ . '/../../vendor/mpdf/mpdf';
+
 
 use App\Models\Cliente;
 use App\Models\Ubicacion;
@@ -27,8 +26,8 @@ use App\Models\Informe;
 use App\Models\Tecnico;
 use App\Models\ServicioModel;
 use App\Models\EmpresaModel;
-use Composer\Autoload;
-use Mpdf\Mpdf;
+
+
 use PDO;
 
 class InformeController {
@@ -149,27 +148,27 @@ class InformeController {
     }
 
     private function generarPDF(array $datos) {
-      //  extract($datos, EXTR_SKIP);
-      //  ob_start();
-      //   CORRECCIÓN: Asegúrate que esta ruta a la plantilla es correcta.
-      //  require __DIR__ . '/../../views/plantilla_pdf.php';
-      //  $html = ob_get_clean();
-      //  $mpdf = new \Mpdf\Mpdf(['MODE'=> 'UTF8', 'format' => A4-P]);
+      extract($datos, EXTR_SKIP);
+      ob_start();
+       //CORRECCIÓN: Asegúrate que esta ruta a la plantilla es correcta.
+      require __DIR__ . '/../views/informes/reporte_pdf.php';
+      $html = ob_get_clean();
+      $mpdf = new \Mpdf\Mpdf(['MODE'=> 'UTF8', 'format' => A4-P]);
 
-      //  $mpdf->writeHTML($html);
-      //  $nombreArchivo = "reporte_servicio_" .($datos['id_servicio'] ?? time()). ".pdf";
-      //  $mpdf->Output($nombreArchivo, 'I');
+      $mpdf->writeHTML($html);
+      $nombreArchivo = "reporte_servicio_" .($datos['id_servicio'] ?? time()). ".pdf";
+      $mpdf->Output($nombreArchivo, 'I');
 
-       // $options = new Options();
-      //  $options->set('isHtml5ParserEnabled', true);
-       // $options->set('isRemoteEnabled', true);
-       // $dompdf = new Dompdf($options);
-      //  $dompdf->loadHtml($html);
-      //  $dompdf->setPaper('A4', 'portrait');
-      //  $dompdf->render();
-      //  $nombreArchivo = "reporte_servicio_" . ($datos['id_servicio'] ?? time()) . ".pdf";
-      //  $dompdf->stream($nombreArchivo, ["Attachment" => false]);
-      //  exit();
+      $options = new Options();
+      $options->set('isHtml5ParserEnabled', true);
+      $options->set('isRemoteEnabled', true);
+      $dompdf = new Dompdf($options);
+      $dompdf->loadHtml($html);
+      $dompdf->setPaper('A4', 'portrait');
+      $dompdf->render();
+      $nombreArchivo = "reporte_servicio_" . ($datos['id_servicio'] ?? time()) . ".pdf";
+      $dompdf->stream($nombreArchivo, ["Attachment" => false]);
+      exit();
     }
 }
 ?>

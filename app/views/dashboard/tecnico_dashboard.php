@@ -75,12 +75,8 @@ if (!isset($_SESSION['id_usuario']) || $_SESSION['id_rol'] != 2) {
                         <i class="bi bi-file-earmark-plus-fill fs-1 mb-3"></i>
                         <h5 class="card-title">Añadir quipo</h5>
                         <p class="card-text">Registre el nuevo equipo</p>
-                        <!-- ENLACE FUNCIONAL -->
-<<<<<<< HEAD
-                        <a href="/softGenn/public/index.php?action=crearequipo" class="btn btn-primary stretched-link">Registrar Ahora</a>
-=======
                         <a href="#" class="btn stretched-link" style="background-color: #135787; color: white;">Registrar Ahora</a>
->>>>>>> 35a4239168bb87fc431d8e63dfb5f3d7f964ec32
+
                     </div>
                 </div>
             </div>

@@ -19,8 +19,8 @@ class equipocontroller{
 
 
         if($num > 0){
-            $equipos_arr = array();
-            $equipos_arr["records"] = array();
+            //$equipos_arr = array();
+           // $equipos_arr["records"] = array();
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
                 extract($row);
                 $equipo_item = array(
@@ -33,11 +33,11 @@ class equipocontroller{
 
                 );
 
-                array_push($equipos_arr["records"], $equipo_item);
+                //array_push($equipos_arr["records"], $equipo_item);
             }
 
             http_response_code(200);
-            echo json_encode($equipos_arr);
+            //echo json_encode($equipos_arr);
 
         }else{
             http_response_code(404);

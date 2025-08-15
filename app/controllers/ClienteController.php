@@ -1,15 +1,18 @@
 <?php
 // app/controllers/ClienteController.php
 namespace App\Controllers;
+
+require_once __DIR__ .'/../models/Cliente.php';
+
+use App\Models\Cliente;
 use PDO;
 class ClienteController {
 
-    public $db;
     private $clienteModel;
 
-    public function __construct() {
+    public function __construct(PDO $db) {
         // Asumimos que ClienteModel.php ya está cargado en index.php
-        $this->clienteModel = new ClienteModel();
+        $this->clienteModel = new Cliente($db);
     }
 
     /**
